@@ -6,7 +6,7 @@ flags = -Wall -Werror -Wextra
 object = $(sources:.c=.o)
 
 all: $(NAME)
-$(NAME):
+$(NAME): $(sources:.c=.o)
 	gcc -c $(flags) $(sources) -I $(inc)
 	ar -rc $(NAME) $(object)
 clean:
