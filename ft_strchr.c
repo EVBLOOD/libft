@@ -6,7 +6,7 @@
 /*   By: sakllam <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 19:16:20 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/02 19:47:15 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/02 20:02:06 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *) &s[i]);
 		i++;
 	}
+	if (c == '\0')
+		return ((char *)&s[i]);
 	return (NULL);
 }
