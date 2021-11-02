@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 20:10:11 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/02 20:10:20 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/02 20:16:49 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	char			*temp;
 
 	temp = dst;
-	countsrc = ft_lengh(src);
-	countdest = ft_lengh(dst);
+	countsrc = ft_strlen(src);
+	countdest = ft_strlen(dst);
 	if (countdest > size)
 	{
 		return (countsrc + size);
