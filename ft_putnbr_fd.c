@@ -3,21 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sakllam <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 11:59:39 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/02 12:00:30 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/03 16:11:15 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
+
+static void	ft_putnbr(long nb, int fd)
+{
+	char	c;
+	if (nb < 0)
+	{
+		c = '-';
+		nb = nb * -1;
+		write(fd, &c, 1);
+	}
+	if (nb <= 9)
+	{
+		c = nb + '0';
+		write (fd,  &c, 1);
+	}
+	else
+	{
+		ft_putnbr(nb / 10, fd);
+		ft_putnbr(nb % 10, fd);
+	}
+}
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*c;
-	int		i;
-
-	c = ft_itoa(n);
-	i = 0;
-	while (c[i])
-		write (fd, &c[i++], 1);
+	ft_putnbr(n, fd);
 }

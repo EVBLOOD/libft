@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sakllam <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:41:34 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/01 18:42:48 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/03 20:18:25 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
+#include "libft.h"
 void	ft_bzero(void *s, size_t n)
 {
 	int		i;
@@ -21,6 +21,6 @@ void	ft_bzero(void *s, size_t n)
 	{
 		b = s;
 		while (i < (int) n)
-			b[i++] = '\0';
+			b[i++] = (char) 0;
 	}
 }

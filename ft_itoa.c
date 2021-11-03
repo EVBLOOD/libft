@@ -3,27 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sakllam <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:49:12 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/01 18:50:49 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/03 14:07:46 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-static int	ft_counting(int n)
+static int	ft_counting(long int n)
 {
 	int	i;
 
 	i = 0;
+	if (n < 0)
+		n = n * -1;
 	if (n > 9)
 		i = ft_counting(n / 10);
 	i++;
 	return (i);
 }
 
-static void	ft_writing(char *p, int n, int *i)
+static void	ft_writing(char *p, long int n, int *i)
 {
+	if (n < 0)
+		n = n * -1;
 	if (n <= 9)
 	{
 		p[*i] = '0' + n;
@@ -40,12 +45,20 @@ char	*ft_itoa(int n)
 {
 	char	*p;
 	int		count;
-	int		index;
 
 	count = ft_counting(n);
-	index = 0;
+	if (n < 0)
+		count += 1;
 	p = (char *) malloc((count + 1) * sizeof(char));
-	ft_writing(p, n, &index);
-	p[index] = '\0';
+	count = 0;
+	if (n < 0)
+	{
+		count = 1;
+		p[0] = '-';
+		ft_writing(p, n, &count);
+	}
+	else
+		ft_writing(p, n, &count);
+	p[count] = '\0';
 	return (p);
 }
