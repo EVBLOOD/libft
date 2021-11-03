@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/03 11:19:03 by sakllam           #+#    #+#             */
+/*   Updated: 2021/11/03 11:41:19 by sakllam          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char*	ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	int	i;
 	int	k;
 
 	i = 0;
-	while (big[i] && (int)len > i)
+	while (big[i] && (int) len > i)
 	{
 		k = 0;
 		while (big[i + k] == little[k] && i + k < (int)len)
@@ -17,6 +29,7 @@ char*	ft_strnstr(const char *big, const char *little, size_t len)
 		}
 		i++;
 	}
+	if (little[0] == '\0')
+		return ((char *) &big[0]);
 	return (0);
 }
-
