@@ -1,5 +1,5 @@
 #include "libft.h"
-
+// #include <stdio.h>
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int	i;
@@ -14,14 +14,16 @@ char	*ft_strtrim(char const *s1, char const *set)
 	c = 1;
 	count = i;
 	count_end = i;
+	if (!s1 || !set || !*set)
+		return (NULL);
 	while (s1[i])
 		i++;
 	tot = i;
-	i -= 1;
-	while (i >= 0)
+	i = i - 1;
+	while (i >= 0  && c)
 	{
 		k = 0;
-		while (set[k] && c)
+		while (set[k])
 		{
 			if (s1[i] == set[k])
 			{
@@ -36,10 +38,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	c = 1;
 	i = 0;
-	while (s1[i])
+	while (s1[i]  && c)
 	{
 		k = 0;
-		while (set[k] && c)
+		while (set[k])
 		{
 			if (s1[i] == set[k])
 			{
@@ -52,6 +54,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 		}
 		i++;
 	};
+	if ((tot - (count + count_end) < 0))
+	{
+		p = (char *)malloc(1 * sizeof(char));
+		p[0] = '\0';
+		return (p);
+	}
 	p = (char *)malloc((tot - count - count_end + 1) * sizeof(char));
 	if (!p)
 		return (0);
@@ -66,3 +74,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	p[k] = '\0';
 	return (p);
 }
+// int main()
+// {
+// 	char *s1 = "  \t \t \n   \n\n\n\t";
+//     char *ret = ft_strtrim(s1, " \n\t");
+// 	printf("|%s|", ret);
+// }

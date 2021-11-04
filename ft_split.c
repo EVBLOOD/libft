@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 15:18:45 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/02 19:50:43 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/04 17:03:14 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ static char	**ft_spf(int i, char **p, char *s, char c)
 		{
 			if (count != 0)
 			{
-				p[b_i] = (char *)malloc((count + 1) * sizeof(char *));
-				if (!p)
-					return (0);
+				p[b_i] = (char *)malloc((count + 1) * sizeof(char));
+				if (!p[b_i])
+					return (NULL);
 				ft_word(i, count, p[b_i], s);
 				b_i++;
 			}
@@ -60,6 +60,8 @@ static char	**ft_spf(int i, char **p, char *s, char c)
 			count = 0;
 		}
 	}
+	if(!p)
+		return (NULL);
 	return (p);
 }
 
@@ -67,7 +69,9 @@ static char	**ft_exep(void)
 {
 	char	**p;
 
-	p = malloc(1 * sizeof(char **));
+	p = malloc(1 * sizeof(char *));
+	if(!p)
+		return (NULL);
 	p[0] = NULL;
 	return (p);
 }
@@ -78,9 +82,11 @@ char	**ft_split(char const *s, char c)
 	int		count;
 	char	**p;
 
+	if(!s)
+		return (NULL);
 	i = ft_iswhite(s, c);
 	count = 0;
-	if (ft_strlen(s) == (size_t)i)
+	if (ft_strlen(s) == (size_t)i || !c)
 		return (ft_exep());
 	while (s[i])
 	{
@@ -93,7 +99,9 @@ char	**ft_split(char const *s, char c)
 		}
 		i++;
 	}
-	p = (char **)malloc((count + 2) * sizeof(char **));
+	p = (char **)malloc((count + 2) * sizeof(char *));
+	if(!p)
+		return NULL;
 	i = ft_iswhite(s, c);
 	p[count + 1] = NULL;
 	p = ft_spf(i, p, (char *)s, c);

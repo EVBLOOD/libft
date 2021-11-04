@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:12:06 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/03 14:13:39 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/04 10:23:09 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		k;
 	int		count;
 	char	*p;
-
+	
+	if (!s1 || !s2)
+		return (NULL);
 	i = ft_strlen(s1);
 	k = ft_strlen(s2);
 	count = i + k + 1;

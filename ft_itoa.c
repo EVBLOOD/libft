@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:49:12 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/03 14:07:46 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/04 17:04:07 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char	*ft_itoa(int n)
 	if (n < 0)
 		count += 1;
 	p = (char *) malloc((count + 1) * sizeof(char));
+	if (!p)
+		return (NULL);
 	count = 0;
 	if (n < 0)
 	{
