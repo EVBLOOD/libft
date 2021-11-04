@@ -6,11 +6,12 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:41:34 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/03 20:18:25 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/04 18:56:54 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 void	ft_bzero(void *s, size_t n)
 {
 	int		i;
