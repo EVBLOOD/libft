@@ -6,13 +6,13 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:55:24 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/04 21:54:40 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/05 11:51:10 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_end(char const *s1, char const *set)
+static int	ft_c(char const *s1, char const *set)
 {
 	int	i;
 	int	c;
@@ -40,7 +40,7 @@ static int	ft_count_end(char const *s1, char const *set)
 	return (count_end);
 }
 
-int	ft_count_start(char const *s1, char const *set)
+int	ft_cs(char const *s1, char const *set)
 {
 	int	c;
 	int	i;
@@ -71,27 +71,25 @@ int	ft_count_start(char const *s1, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	i;
-	int	k;
-	int	c;
+	int		i;
+	int		k;
 	char	*p;
 
 	i = 0;
-	c = 1;
 	if (!s1 || !set || !*set)
 		return (NULL);
-	if (((int) ft_strlen(s1) - (ft_count_start(s1,set) + ft_count_end(s1,set)) < 0))
+	if (((int) ft_strlen(s1) - (ft_cs(s1, set) + ft_c(s1, set)) < 0))
 	{
-		p = (char *)malloc(1 * sizeof(char));
+		p = (char *) malloc(1 * sizeof(char));
 		p[0] = '\0';
 		return (p);
 	}
-	p = (char *)malloc(((int) ft_strlen(s1) - ft_count_start(s1,set) - ft_count_end(s1,set) + 1) * sizeof(char));
+	p = malloc(((int) ft_strlen(s1) - ft_cs(s1, set) - ft_c(s1, set) + 1) * 1);
 	if (!p)
 		return (0);
-	i = ft_count_start(s1,set);
+	i = ft_cs(s1, set);
 	k = 0;
-	while (s1[i] && i != (int) ft_strlen(s1) - ft_count_end(s1,set))
+	while (s1[i] && i != (int) ft_strlen(s1) - ft_c(s1, set))
 	{
 		p[k++] = s1[i];
 		i++;
