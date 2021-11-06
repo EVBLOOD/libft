@@ -6,7 +6,7 @@
 #    By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 12:19:38 by sakllam           #+#    #+#              #
-#    Updated: 2021/11/05 12:19:41 by sakllam          ###   ########.fr        #
+#    Updated: 2021/11/06 19:36:50 by sakllam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,16 +54,27 @@ sources = ft_atoi.c\
 		 ft_strncmp.c\
 		 ft_substr.c
 inc = libft.h
+bonussources =	ft_lstnew.c\
+				ft_lstadd_front.c\
+				ft_lstsize.c\
+				ft_lstlast.c\
+				ft_lstadd_back.c\
+				ft_lstdelone.c
 flags = -Wall -Werror -Wextra
 object = $(sources:.c=.o)
+bonusobject = $(bonussources:.c=.o)
 
 all: $(NAME)
-$(NAME): $(sources:.c=.o)
+$(NAME):
 	gcc -c $(flags) $(sources) -I $(inc)
 	ar -rc $(NAME) $(object)
+bonus: 
+	gcc -c $(flags) $(bonussources) -I $(inc)
+	ar -rc $(NAME) $(bonusobject)
+	ranlib $(NAME)
 clean:
-	rm -f $(object)
+	rm -f $(object) $(bonusobject)
 fclean:
-	rm -f $(object)
+	rm -f $(object) $(bonusobject)
 	rm -f $(NAME)
 re: fclean all
