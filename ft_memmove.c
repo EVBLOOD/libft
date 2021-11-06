@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 13:48:13 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/02 14:56:27 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/06 13:04:13 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 		return (NULL);
 	if (a > b)
 	{
-		while (n-- > 0)
+		while ((int)n-- > 0)
 			a[n] = b[n];
 	}
 	else

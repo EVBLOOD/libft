@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sakllam <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:51:06 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/03 17:58:03 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/06 11:04:13 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	long		x;
 
 	x = n;
-	if (x < 0)
+	if (x < 0 || !s)
 		return (NULL);
 	src = s;
 	i = 0;

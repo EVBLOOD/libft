@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:37:11 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/03 10:47:27 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/06 11:04:14 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(const char *s)
 	char	*p;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	p = (char *) malloc(ft_strlen(s) + 1);
 	if (!p)
 		return (0);
