@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 11:55:51 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/06 13:04:12 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/07 19:34:04 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	i = 0;
 	conv = n;
 	b = NULL;
-	if (conv > 0 && s)
+	if (conv > 0)
 	{
 		b = s;
 		while (i < (int) n)

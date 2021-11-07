@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:52:54 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/03 17:01:49 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/07 19:45:23 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char		*x;
 	const char	*y;
 
+	if (!src && !dest)
+		return (NULL);
 	x = dest;
 	y = src;
 	i = 0;
-	if (n > 0 && y != NULL && x != NULL)
+	while ((size_t) i < n)
 	{
-		while (i < (int) n)
-		{
-			x[i] = y[i];
-			i++;
-		}
+		x[i] = y[i];
+		i++;
 	}
 	return (dest);
 }

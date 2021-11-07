@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 12:00:56 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/06 11:05:11 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/07 19:52:42 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	int	ln;
 
+	if (!s)
+		return ;
 	ln = ft_strlen(s);
 	write(fd, s, ln);
 }

@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:19:03 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/06 13:08:46 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/07 19:49:03 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	int	k;
 
 	i = 0;
-	if (!big || !little)
+	if (!big && !little)
 		return (NULL);
 	while (big[i] && len > (unsigned int) i)
 	{

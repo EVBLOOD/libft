@@ -6,7 +6,7 @@
 #    By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 12:19:38 by sakllam           #+#    #+#              #
-#    Updated: 2021/11/07 11:22:21 by sakllam          ###   ########.fr        #
+#    Updated: 2021/11/07 17:52:07 by sakllam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ object = $(sources:.c=.o)
 bonusobject = $(bonussources:.c=.o)
 
 all: $(NAME)
-$(NAME):
+$(NAME): $(sources:.c=.o)
 	gcc -c $(flags) $(sources) -I $(inc)
 	ar -rc $(NAME) $(object)
 bonus: 

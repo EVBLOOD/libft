@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 13:48:13 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/06 13:04:13 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/07 19:46:08 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	i = 0;
 	a = dst;
 	b = (char *) src;
-	if ((!a || !b))
+	if ((!a && !b))
 		return (NULL);
 	if (a > b)
 	{

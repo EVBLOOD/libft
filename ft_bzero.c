@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:41:34 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/06 12:38:09 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/07 19:34:38 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	ft_bzero(void *s, size_t n)
 	int		i;
 	char	*b;
 
-	if (!s)
-		return ;
 	i = 0;
 	if ((int) n >= 0)
 	{
