@@ -6,7 +6,7 @@
 #    By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 12:19:38 by sakllam           #+#    #+#              #
-#    Updated: 2021/11/06 19:36:50 by sakllam          ###   ########.fr        #
+#    Updated: 2021/11/07 11:22:21 by sakllam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,10 @@ bonussources =	ft_lstnew.c\
 				ft_lstsize.c\
 				ft_lstlast.c\
 				ft_lstadd_back.c\
-				ft_lstdelone.c
+				ft_lstdelone.c\
+				ft_lstclear.c\
+				ft_lstiter.c\
+				ft_lstmap.c
 flags = -Wall -Werror -Wextra
 object = $(sources:.c=.o)
 bonusobject = $(bonussources:.c=.o)
