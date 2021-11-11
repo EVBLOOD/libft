@@ -6,94 +6,94 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 19:55:24 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/05 11:51:10 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/11 01:19:29 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_c(char const *s1, char const *set)
+static int	ft_front(const char *s1, const char *set)
 {
 	int	i;
-	int	c;
-	int	count_end;
-	int	k;
+	int	j;
+	int	countf;
 
-	i = ft_strlen(s1);
-	c = 1;
-	count_end = 0;
-	while (--i >= 0 && c)
-	{
-		k = 0;
-		while (set[k])
-		{
-			if (s1[i] == set[k])
-			{
-				count_end++;
-				break ;
-			}
-			if (!set[k + 1])
-				c = 0;
-			k++;
-		}
-	}
-	return (count_end);
-}
-
-int	ft_cs(char const *s1, char const *set)
-{
-	int	c;
-	int	i;
-	int	k;
-	int	count;
-
-	c = 1;
 	i = 0;
-	count = 0;
-	while (s1[i] && c)
+	countf = 0;
+	while (s1[i])
 	{
-		k = 0;
-		while (set[k])
+		j = 0;
+		while (set[j])
 		{
-			if (s1[i] == set[k])
-			{
-				count++;
-				break ;
-			}
-			if (!set[k + 1])
-				c = 0;
-			k++;
+			if (s1[i] == set[j])
+				countf++;
+			j++;
 		}
 		i++;
+		if (countf != i)
+			break ;
 	}
-	return (count);
+	return (countf);
+}
+
+static int	ft_end(const char *s1, const char *set)
+{
+	int	i;
+	int	j;
+	int	countb;
+
+	countb = 0;
+	i = ft_strlen(s1) - 1;
+	while (i >= 0)
+	{
+		j = 0;
+		while (set[j])
+		{
+			if (s1[i] == set[j])
+				countb++;
+			j++;
+		}
+		if ((int)ft_strlen(s1) - i != countb)
+			break ;
+		i--;
+	}
+	return (countb);
+}
+
+static char	*ft_error(void)
+{
+	char	*ret;
+
+	ret = malloc(1);
+	if (!ret)
+		return (NULL);
+	ret[0] = '\0';
+	return (ret);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;
-	int		k;
-	char	*p;
+	int		countf;
+	int		countb;
+	char	*ret;
 
-	i = 0;
-	if (!s1 || !set || !*set)
+	if (!s1 || !set)
 		return (NULL);
-	if (((int) ft_strlen(s1) - (ft_cs(s1, set) + ft_c(s1, set)) < 0))
+	countf = ft_front(s1, set);
+	countb = ft_end(s1, set);
+	if ((unsigned int) countb == ft_strlen(s1))
+		return (ft_error());
+	ret = malloc(((ft_strlen(s1) - (countb + countf)) + 1));
+	if (!ret)
+		return (NULL);
+	i = 0;
+	while (countf < ((int)ft_strlen(s1) - countb))
 	{
-		p = (char *) malloc(1 * sizeof(char));
-		p[0] = '\0';
-		return (p);
-	}
-	p = malloc(((int) ft_strlen(s1) - ft_cs(s1, set) - ft_c(s1, set) + 1) * 1);
-	if (!p)
-		return (0);
-	i = ft_cs(s1, set);
-	k = 0;
-	while (s1[i] && i != (int) ft_strlen(s1) - ft_c(s1, set))
-	{
-		p[k++] = s1[i];
+		ret[i] = s1[countf];
+		countf++;
 		i++;
 	}
-	p[k] = '\0';
-	return (p);
+	ret[i] = '\0';
+	return (ret);
 }

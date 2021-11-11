@@ -6,7 +6,7 @@
 #    By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 12:19:38 by sakllam           #+#    #+#              #
-#    Updated: 2021/11/08 16:05:27 by sakllam          ###   ########.fr        #
+#    Updated: 2021/11/10 13:41:45 by sakllam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,6 @@ sources = ft_atoi.c\
 		 ft_strlcat.c\
 		 ft_strncmp.c\
 		 ft_substr.c
-inc = libft.h
 bonussources =	ft_lstnew.c\
 				ft_lstadd_front.c\
 				ft_lstsize.c\
@@ -63,21 +62,17 @@ bonussources =	ft_lstnew.c\
 				ft_lstclear.c\
 				ft_lstiter.c\
 				ft_lstmap.c
-flags = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 object = $(sources:.c=.o)
 bonusobject = $(bonussources:.c=.o)
 
 all: $(NAME)
 $(NAME): $(sources:.c=.o)
-	gcc -c $(flags) $(sources) -I $(inc)
-	ar -rc $(NAME) $(object)
-bonus: 
-	gcc -c $(flags) $(bonussources) -I $(inc)
-	ar -rc $(NAME) $(bonusobject)
-	ranlib $(NAME)
+	@ar -rc $(NAME) $(object)
+bonus: $(object) $(bonusobject)
+	@ar -rc $(NAME) $(object) $(bonusobject)
 clean:
 	rm -f $(object) $(bonusobject)
-fclean:
-	rm -f $(object) $(bonusobject)
+fclean: clean
 	rm -f $(NAME)
 re: fclean all

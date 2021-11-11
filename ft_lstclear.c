@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 10:52:02 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/07 12:55:58 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/11 00:00:42 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		del(temp->content);
 		free(temp);
 	}
-	*lst = NULL;
 }

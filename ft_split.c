@@ -6,98 +6,69 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 15:18:45 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/04 19:47:44 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/11 00:49:42 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_iswhite(char const *s, char c)
+static size_t	ft_count(char const *s, char c)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (s[i] != '\0')
+	{
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i] != '\0')
+		{
+			if ((s[i - 1] == c || i == 0))
+				count++;
+			i++;
+		}
+	}
+	return (count);
+}
+
+static char	**free_tab(char **tab)
 {
 	int	i;
 
 	i = 0;
-	while (s[i] == c)
-		i++;
-	return (i);
-}
-
-static void	ft_word(int i, int count, char *p, char *s)
-{
-	int	k;
-
-	k = 0;
-	while (k < count)
-	{
-		p[k] = s[(i - count) + k];
-		k++;
-	}
-	p[k] = '\0';
-}
-
-static char	**ft_spf(int i, char **p, char *s, char c)
-{
-	int	b_i;
-	int	count;
-
-	b_i = 0;
-	count = 0;
-	while (s[i++])
-	{
-		count++;
-		if (s[i] == c || s[i] == '\0')
-		{
-			if (count != 0)
-			{
-				p[b_i] = (char *)malloc((count + 1) * sizeof(char));
-				if (!p[b_i])
-					return (NULL);
-				ft_word(i, count, p[b_i], s);
-				b_i++;
-			}
-			i += ft_iswhite(&s[i], c);
-			count = 0;
-		}
-	}
-	return (p);
-}
-
-static char	**ft_exep(void)
-{
-	char	**p;
-
-	p = malloc(1 * sizeof(char *));
-	if (!p)
-		return (NULL);
-	p[0] = NULL;
-	return (p);
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		count;
-	char	**p;
+	char		**tab;
+	size_t		i;
+	size_t		len;
 
+	i = 0;
 	if (!s)
-		return (NULL);
-	i = ft_iswhite(s, c) - 1;
-	count = 0;
-	if (ft_strlen(s) == (size_t)++i || !c)
-		return (ft_exep());
-	while (s[++i])
+		return (0);
+	tab = (char **)malloc((ft_count(s, c) + 1) * sizeof(*tab));
+	if (!tab)
+		return (tab);
+	while (*s)
 	{
-		if (s[i] == c)
-		{
-			count++;
-			i += ft_iswhite(&s[i], c);
-			if (!s[i])
-				count -= 1;
-		}
+		while (*s && *s == c)
+			s++;
+		len = 0;
+		while (s[len] && s[len] != c)
+			len++;
+		if (len != 0)
+			tab[i++] = ft_substr(s, 0, len);
+		if (len != 0 && !tab[i - 1])
+			return (free_tab(tab));
+		s += len;
 	}
-	p = (char **)malloc((count + 2) * sizeof(char *));
-	if (!p)
-		return (NULL);
-	p[count + 1] = NULL;
-	return (ft_spf(ft_iswhite(s, c), p, (char *)s, c));
+	tab[i] = NULL;
+	return (tab);
 }

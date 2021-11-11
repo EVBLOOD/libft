@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 18:39:28 by sakllam           #+#    #+#             */
-/*   Updated: 2021/11/06 21:11:44 by sakllam          ###   ########.fr       */
+/*   Updated: 2021/11/10 23:59:53 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		ptr = ft_lstlast((*lst));
 		ptr->next = new;
 	}
-	new->next = NULL;
 }
