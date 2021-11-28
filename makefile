@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = libft.a
-include = libft.h
+INC = libft.h
 sources = ft_atoi.c\
 		 ft_isalpha.c\
 		 ft_isalpha.c\
@@ -68,11 +68,11 @@ object = $(sources:.c=.o)
 bonusobject = $(bonussources:.c=.o)
 
 all: $(NAME)
-$(NAME): $(object) $(include)
-	gcc -c $(CFLAGS) $(sources) -I $(include)
+$(NAME): $(object) $(INC)
+	gcc -c $(CFLAGS) $(sources) -I $(INC)
 	@ar -rc $(NAME) $(object)
 bonus: $(NAME) $(bonusobject)
-	gcc -c $(CFLAGS) $(bonussources) -I $(include)
+	gcc -c $(CFLAGS) $(bonussources) -I $(INC)
 	@ar -rc $(NAME) $(object) $(bonusobject)
 clean:
 	rm -f $(object) $(bonusobject)
